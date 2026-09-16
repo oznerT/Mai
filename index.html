@@ -5,6 +5,19 @@
 <div class="ambient" aria-hidden="true"></div>
 <header><a class="brand collaboration" href="index.html" aria-label="PilaTV por eme de mai, inicio"><img class="pila-logo" src="assets/pila-logo.png" alt="PilaTV"><span class="cross">×</span><img class="eme-logo" src="assets/eme-logo.png" alt="eme de mai"></a><div class="edition"><span class="live-dot"></span> ESPECIAL DEPORTE & MODA</div><button id="fullscreen" class="quiet" aria-label="Pantalla completa">⛶ <span>Pantalla completa</span></button></header>
 <main>
+<section id="game-selector" class="game-selector">
+<div class="selector-copy"><div class="eyebrow"><span></span> PilaTV × eme de mai</div><h1>Elegí el juego.<br><em>Arranca la mesa.</em></h1><p>Dos maneras de cruzar moda y deporte.<br>Elegí una para empezar.</p></div>
+<div class="game-cards">
+<button class="game-card game-card-outfit" data-game="adivina" aria-label="Jugar ¿De quién es este outfit?">
+<span class="game-number">01</span><span class="game-icon">?</span><span class="game-kicker">ADIVINÁ EL LOOK</span><strong>¿De quién es<br>este outfit?</strong><small>La cara está tapada. Escribí el nombre o pedí opciones.</small><span class="game-cta">Jugar ahora ↗</span>
+</button>
+<button class="game-card game-card-wheel" data-game="roulette" aria-label="Jugar La ruleta del stream">
+<span class="game-number">02</span><span class="game-icon">✳</span><span class="game-kicker">PREGUNTAS + DEBATE</span><strong>La ruleta<br>del stream</strong><small>Girá, elegí una respuesta y abrí el debate en la mesa.</small><span class="game-cta">Jugar ahora ↗</span>
+</button>
+</div>
+</section>
+<div id="roulette-game" class="game-screen" hidden>
+<div class="game-toolbar"><button class="quiet return-selector">← Elegir otro juego</button><span>LA RULETA DEL STREAM</span></div>
 <section id="home">
 <div class="intro"><div class="eyebrow"><span></span> PilaTV × eme de mai</div><h1>Moda y deporte.<br><em>¿Cuánto sabés?</em></h1><p>Girá la ruleta y elegí una respuesta.<br>Después lo discutimos.</p><div class="category-list" id="categories"></div><div class="intro-note"><span>✳</span><div>Jueguen desde la mesa.<small>Revelen la respuesta cuando quieran.</small></div></div></div>
 <div class="wheel-area"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="wheel-top"><span>DALE UNA VUELTA</span><i>↙</i></div><div class="wheel-wrap"><div class="pointer" aria-hidden="true"></div><div id="wheel" class="wheel"></div><button id="spin-center" class="spin-center" aria-label="Girar la ruleta"><span>↗</span>GIRAR</button></div><button id="spin" class="primary spin-button">Girar la ruleta <span>↗</span></button><p id="spin-status" class="wheel-note" role="status">También podés tocar el centro de la ruleta.</p></div>
@@ -13,7 +26,16 @@
 <div class="question-top"><button id="back" class="quiet">← Volver a la ruleta</button><span id="question-category" class="category-pill"></span><span class="episode">PREGUNTA</span></div>
 <div class="question-grid"><figure class="question-photo"><img id="question-image" alt=""><figcaption id="image-caption"></figcaption></figure><div class="question-content"><div class="eyebrow">ELEGÍ UNA OPCIÓN</div><h2 id="question-title" tabindex="-1"></h2><div id="options" class="options"></div><button id="reveal" class="primary">Revelar respuesta <span>↗</span></button><div id="answer" class="answer" hidden aria-live="polite"><span class="answer-label">LA RESPUESTA</span><p id="explanation"></p><div class="debate"><span>PARA DISCUTIR</span><h3 id="debate"></h3></div><div class="answer-bottom"><a id="source" target="_blank" rel="noopener noreferrer">Ver fuente ↗</a><button id="next" class="primary">Otra vuelta ↗</button></div></div></div></div>
 </section>
+</div>
+<section id="adivina-game" class="game-screen adivina-screen" hidden>
+<div class="game-toolbar"><button class="quiet return-selector">← Elegir otro juego</button><span>¿DE QUIÉN ES ESTE OUTFIT?</span></div>
+<adivina-outfit titulo="¿De quién es este outfit?" logo-izq="adivinaApp/imagenes/logo-pila.png" logo-der="adivinaApp/imagenes/logo-mai.png"></adivina-outfit>
+</section>
 </main>
 <footer><span>FÚTBOL · BÁSQUET · TENIS · F1 · JJ. OO.</span><span>PilaTV <b>×</b> Emedemai <span class="footer-star">✳</span></span></footer>
-<script src="questions.js"></script><script src="app.js"></script>
+<script src="questions.js"></script>
+<script src="adivinaApp/data/jugadores.js"></script>
+<script>window.ADIVINA_JUGADORES.forEach(j=>{j.imagen='adivinaApp/'+j.imagen;if(j.imagenRevelada)j.imagenRevelada='adivinaApp/'+j.imagenRevelada;});</script>
+<script src="adivinaApp/adivina.js"></script>
+<script src="app.js"></script>
 </body></html>

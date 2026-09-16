@@ -62,3 +62,22 @@ $('spin').onclick=spin;$('spin-center').onclick=spin;$('reveal').onclick=reveal;
 $('fullscreen').onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen();}catch{$('fullscreen').textContent='Usá F11 para pantalla completa';}};
 document.addEventListener('keydown',event=>{if(event.altKey||event.ctrlKey||event.metaKey||event.repeat)return;if(current&&'1234'.includes(event.key)){event.preventDefault();select(Number(event.key)-1);}});
 $('question-image').onerror=()=>{if($('question-image').getAttribute('src')==='assets/question.svg')return;$('question-image').src='assets/question.svg';$('image-caption').textContent='No se pudo cargar la foto. Podés consultar la fuente de la respuesta.';};
+
+const gameSelector=$('game-selector'),rouletteGame=$('roulette-game'),adivinaGame=$('adivina-game');
+function showGame(game){
+ gameSelector.hidden=true;rouletteGame.hidden=game!=='roulette';adivinaGame.hidden=game!=='adivina';
+ if(game==='roulette'){
+  $('question-view').hidden=true;$('home').hidden=false;current=null;
+  window.scrollTo(0,0);$('spin').focus({preventScroll:true});
+ }else{
+  const outfit=document.querySelector('adivina-outfit');
+  customElements.whenDefined('adivina-outfit').then(()=>outfit.reset());
+  window.scrollTo(0,0);
+ }
+}
+function showGameSelector(){
+ rouletteGame.hidden=true;adivinaGame.hidden=true;gameSelector.hidden=false;
+ window.scrollTo(0,0);document.querySelector('[data-game="adivina"]').focus({preventScroll:true});
+}
+document.querySelectorAll('[data-game]').forEach(button=>button.addEventListener('click',()=>showGame(button.dataset.game)));
+document.querySelectorAll('.return-selector').forEach(button=>button.addEventListener('click',showGameSelector));

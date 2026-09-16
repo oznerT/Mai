@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PilaTV x Emedemai — ¿De quién es este outfit?</title>
+  <style>
+    body { margin: 0; min-height: 100vh; background: #fe6fff; padding: 24px 16px; }
+  </style>
+</head>
+<body>
+  <!-- 1) Datos  2) Componente  3) Etiqueta -->
+  <script src="data/jugadores.js"></script>
+  <script src="adivina.js"></script>
+
+  <adivina-outfit
+    titulo="¿De quién es este outfit?"
+    logo-izq="imagenes/logo-pila.png"
+    logo-der="imagenes/logo-mai.png"></adivina-outfit>
+
+  <script>
+    // Eventos opcionales para integrar con la página que lo contenga
+    document.addEventListener("adivina-respuesta", (e) => console.log("respuesta", e.detail));
+    document.addEventListener("adivina-fin", (e) => console.log("fin", e.detail));
+  </script>
+</body>
+</html>
