@@ -45,7 +45,7 @@ function showQuestion(question){
  const text=document.createElement('span');text.textContent=option;
  button.append(letter,text);button.onclick=()=>select(i);return button;
  }));
- $('explanation').textContent=question.explanation;$('debate').textContent=question.debate;$('source').href=question.source;
+ $('explanation').textContent=question.explanation;$('source').href=question.source;
  window.scrollTo(0,0);$('question-title').focus({preventScroll:true});
 }
 function select(i){if(revealed)return;selected=i;[...$('options').children].forEach((b,n)=>{b.classList.toggle('selected',n===i);b.setAttribute('aria-pressed',String(n===i));});}
